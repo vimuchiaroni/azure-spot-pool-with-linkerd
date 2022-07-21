@@ -37,8 +37,8 @@ def create_cart():
 
 @app.route('/get/carts')
 def get_carts():
-
-    _return = r.get(f'{cart_service_url}/api/carts')
+    param = request.args.get('email')
+    _return = r.get(f'{cart_service_url}/api/cart?email={param}')
     return make_response(_return.content, _return.status_code)
 
 @app.route('/retries/upstream/cart/<retries_quantity>')

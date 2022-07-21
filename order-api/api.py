@@ -39,20 +39,12 @@ def create_cart():
 
     return make_response(jsonify(response), statusCode)
 
-@app.route('/api/cart')
+@app.route('/api/carts')
 def get_carts():
-    try:
-        email = request.args.get('email')
-        response = jsonify(carts[email])
-        statusCode = 200
-    except Exception as ex:
-        response = "Cart not found"
-        statusCode = 404
-    return make_response(response, statusCode)
+    return make_response(jsonify(carts), 200)
 
 @app.route('/api/retries/<retries_quantity>')
 def retry_route(retries_quantity:int):
-
 
     if  len(retries) < int(retries_quantity):
         response = {
