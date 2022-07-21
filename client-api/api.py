@@ -11,6 +11,10 @@ app = Flask(app_name)
 app.debug = True
 cart_service_url=environ['CART_SERVICE_URL']
 
+@app.route('/healthcheck')
+def healthcheck():
+    return make_response('OK', 200)
+
 @app.route('/create/cart', methods=['POST'])
 def create_cart():
     request_data = request.get_json()
@@ -45,3 +49,4 @@ def get_carts():
 def retries_upstream_cart(retries_quantity):
     _return = r.get(f'{cart_service_url}/api/retries/{retries_quantity}')
     return make_response(_return.content, _return.status_code)
+

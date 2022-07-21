@@ -10,6 +10,11 @@ app.debug = True
 
 carts = {}
 retries = []
+
+@app.route('/healthcheck')
+def healthcheck():
+    return make_response('OK', 200)
+
 @app.route('/api/create/cart', methods=['POST'])
 def create_cart():
     request_data = request.get_json()
