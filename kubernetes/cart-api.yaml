@@ -86,3 +86,27 @@ spec:
   selector:
     app: cart-api
   type: ClusterIP
+
+---
+
+apiVersion: linkerd.io/v1alpha2
+kind: ServiceProfile
+metadata:
+  creationTimestamp: null
+  name: cart-api.cart-api.svc.cluster.local
+  namespace: cart-api
+spec:
+  routes:
+  - condition:
+      method: GET
+      pathRegex: /api/cart
+    name: GET /api/cart
+  - condition:
+      method: GET
+      pathRegex: /api/retries/\d+
+    name: GET /api/retries
+    isRetryable: true
+  - condition:
+      method: POST
+      pathRegex: /api/create/cart
+    name: POST /api/create/cart
