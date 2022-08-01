@@ -2,8 +2,8 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 import { URL } from 'https://jslib.k6.io/url/1.0.0/index.js';
 export const options = {
-  vus: 10,
-  duration: '30s',
+  vus: 20,
+  duration: '60',
 };
 export default function () {
   const emails = ["victor.muchiaroni@brmalls.com.br", "teste@brmalls.com.br", "teste@hotmail.com", "teste@gmail.com"];
@@ -14,9 +14,10 @@ export default function () {
     'email': emails[email_random],
     'products': products[products_random]
   };
-  const url_create = 'http://127.0.0.1:5005/create/cart';
-  const url_get = new URL('http://127.0.0.1:5005/get/carts');
-  const url_retry = 'http://127.0.0.1:5005/retries/upstream/cart/1'
+  const svc_url = 'http://client-api.client-api.svc.cluster.local:8000';
+  const url_create = svc_url + '/create/cart';
+  const url_get = new URL(svc_url + '/get/carts');
+  const url_retry = svc_url + '/retries/upstream/cart/0'
   url_get.searchParams.append('email', emails[email_random]);
 
   const params = {
