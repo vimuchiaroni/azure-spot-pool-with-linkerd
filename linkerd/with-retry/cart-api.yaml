@@ -101,6 +101,7 @@ spec:
       method: GET
       pathRegex: /api/cart
     name: GET /api/cart
+    isRetryable: true
   - condition:
       method: GET
       pathRegex: /api/retries/\d+
@@ -110,3 +111,4 @@ spec:
       method: POST
       pathRegex: /api/create/cart
     name: POST /api/create/cart
+    isRetryable: true

@@ -106,8 +106,3 @@ spec:
       pathRegex: /retries/upstream/cart/\d+
     name: GET
     isRetryable: false
-  - condition:
-      method: POST
-      pathRegex: /
-    name: POST
-    isRetryable: false
