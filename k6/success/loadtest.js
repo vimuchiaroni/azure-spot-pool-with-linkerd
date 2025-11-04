@@ -6,7 +6,7 @@ export const options = {
   duration: '60',
 };
 export default function () {
-  const emails = ["victor.muchiaroni@brmalls.com.br", "teste@brmalls.com.br", "teste@hotmail.com", "teste@gmail.com"];
+  const emails = ["victor@test.com.br", "teste@test.com.br", "teste@hotmail.com", "teste@gmail.com"];
   const products = ["rice", "beans", "lettuce", "tomatoes"];
   const email_random = Math.floor(Math.random() * emails.length);
   const products_random = Math.floor(Math.random() * products.length);
